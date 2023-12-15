@@ -1,0 +1,8 @@
+{
+    "name": "vinicius/swoole-training",
+    "autoload":{
+        "psr-4":{
+            "App\\": "app/"
+        }
+    }
+}

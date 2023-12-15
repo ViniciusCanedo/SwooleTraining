@@ -7,7 +7,7 @@ services:
         image: 'mysql:8.0'
         working_dir: /app
         volumes:
-            - '.:/app'
+            - './phpdocker/mysql:/app'
         environment:
             - MYSQL_ROOT_PASSWORD=swoole
             - MYSQL_DATABASE=swoole
