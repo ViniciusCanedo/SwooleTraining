@@ -23,12 +23,18 @@ git clone https://github.com/your-username/SwooleTraining.git
 cd SwooleTraining
 ```
 
-### 3. Run Docker Compose:
+### 3. Run Composer:
+
+```bash
+composer install
+```
+
+### 4. Run Docker Compose:
 
 ```bash
 docker-compose up -d
 ```
-### 4. Run Docker Compose:
+### 5. Open Browser:
 Open your web browser and go to [http://localhost:8000](http://localhost:8000) to access the SwooleTraining system.
 
 ## Stopping the System
