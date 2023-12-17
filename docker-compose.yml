@@ -1,33 +1,38 @@
 ###############################################################################
 #                          Generated on phpdocker.io                          #
 ###############################################################################
-version: '3.1'
+version: "3.1"
 services:
     mysql:
-        image: 'mysql:8.0'
+        image: "mysql:8.0"
         working_dir: /app
         volumes:
-            - './phpdocker/mysql:/app'
+            - "./phpdocker/mysql:/app"
         environment:
             - MYSQL_ROOT_PASSWORD=swoole
             - MYSQL_DATABASE=swoole
             - MYSQL_USER=vinicius
             - MYSQL_PASSWORD=swoole
         ports:
-            - '8002:3306'
+            - "8002:3306"
 
     webserver:
-        image: 'nginx:alpine'
+        image: "nginx:alpine"
         working_dir: /app
         volumes:
-            - '.:/app'
-            - './phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf'
+            - ".:/app"
+            - "./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf"
         ports:
-            - '8000:80'
+            - "8000:80"
 
     php-fpm:
         build: phpdocker/php-fpm
         working_dir: /app
         volumes:
-            - '.:/app'
-            - './phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini'
+            - ".:/app"
+            - "./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini"
+        environment:
+            - DB_HOST=mysql
+            - DB_NAME=swoole
+            - DB_USER=root
+            - DB_PASSWORD=swoole
